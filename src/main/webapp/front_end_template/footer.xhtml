@@ -32,7 +32,7 @@
 								<ul class="footer-links">
 								<ui:repeat var="c" value="#{categoryBean.categories}">								
 									<li>
-									 <h:link outcome="/shop" styleClass="">
+									 <h:link outcome="/front_end/shop" styleClass="">
 									 <f:param name="cId" value="#{c.id}"></f:param>
 									 #{c.name}
 									 </h:link>
@@ -50,12 +50,12 @@
 								<h3 class="footer-title">Information</h3>
 								<ul class="footer-links">
 									<li>
-									 <h:link outcome="/about" styleClass="">
+									 <h:link outcome="/front_end/about" styleClass="">
 									About Us
 									 </h:link>
 									</li>
 									<li>
-									<h:link outcome="/contact" styleClass="">
+									<h:link outcome="/front_end/contact" styleClass="">
 									Contact Us
 									 </h:link>
 									</li>
@@ -71,17 +71,17 @@
 								<h3 class="footer-title">Service</h3>
 								<ul class="footer-links">
 									<li>
-									<h:link outcome="/register" styleClass="">
+									<h:link outcome="/front_end/register" styleClass="">
 									My Account
 									 </h:link>								
 									
 									</li>
 									<li>
-									<h:link outcome="/cart" styleClass="">
+									<h:link outcome="/front_end/cart" styleClass="">
 									View Cart
 									 </h:link>
 									 </li>								
-									<li><h:link outcome="/myOrder" styleClass="">
+									<li><h:link outcome="/front_end/myOrder" styleClass="">
 									My Order
 									 </h:link></li>
 									<li><a href="#">Help</a></li>

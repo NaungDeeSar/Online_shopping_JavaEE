@@ -52,7 +52,7 @@ public class UserLoginBean implements  Serializable {
 			
 			AuthenticationStatus  status=securityContext.authenticate(req, resp, AuthenticationParameters.withParams().credential(credential));
 			if(status == AuthenticationStatus.SUCCESS ) {
-				return "/index.xhtml?faces-redirect=true";
+				return "/index";
 			}
 		} catch (AppException e) {
 			FacesContext cxt=FacesContext.getCurrentInstance();

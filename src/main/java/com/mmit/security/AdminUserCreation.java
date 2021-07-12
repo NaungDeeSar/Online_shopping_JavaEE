@@ -23,6 +23,6 @@ public class AdminUserCreation {
 		user.setPassword("admin");
 		user.setRole(Role.Admin);
 		user.setUserName("Admin");			
-	    service.createUser(user);		
+	    //service.createUser(user);		
 	}
 }

@@ -6,6 +6,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"> 
 
 <ui:composition template="/front_end_template/demo.xhtml">    
+<ui:define name="title">Shopping Cart</ui:define> 
     <ui:define name="main-content">
     	<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
@@ -62,7 +63,7 @@
 	                                            <div class="qtyField">
 	                                            <h:commandLink action="#{cartBean.qtyMinus(oitem.product.id)}" styleClass="qtyBtn minus" >
 	                                               <i class="fas fa-minus"></i>
-	                                                <f:ajax render="@form sub-total total" execute="@form"></f:ajax>
+	                                                <f:ajax render="@form sub-total total cart-item-total" execute="@form"></f:ajax>
 	                                                </h:commandLink>
 	                                                
 	                                               
@@ -71,7 +72,7 @@
 	                                                </h:inputText>
 	                                                <h:commandLink action="#{cartBean.qtyPlus(oitem.product.id)}" styleClass="qtyBtn plus" >
 	                                                <i class="fas fa-plus"></i>
-	                                                <f:ajax render="@form sub-total total" execute="@form"></f:ajax>
+	                                                <f:ajax render="@form sub-total total cart-item-total cart-item-count" execute="@form"></f:ajax>
 	                                                </h:commandLink>	                                                
 	                                            </div>
 	                                        </div>

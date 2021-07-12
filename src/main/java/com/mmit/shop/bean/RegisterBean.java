@@ -29,15 +29,22 @@ public class RegisterBean implements Serializable  {
 	 @Inject
 	 private FacesContext cxt;
 	 @PostConstruct
-		private void init() {			
+		private void init() {		
+		
+			String id=cxt.getExternalContext().getRequestParameterMap().get("uId");
+			
+			if(id !=null && !id.equals(""))
+				user=userservice.findById(Integer.parseInt(id));
+			else
 				user =new Users();
+			
 				user.setRole(Role.Customer);
 		}
 	 
 	 public String save() {
 			try {
 				userservice.createUser(user);
-				return "/login.xhtml?faces-redirect=true";
+				return "/front_end/login.xhtml?faces-redirect=true";
 				
 			} catch (EJBException e) {
 				FacesContext cxt=FacesContext.getCurrentInstance();

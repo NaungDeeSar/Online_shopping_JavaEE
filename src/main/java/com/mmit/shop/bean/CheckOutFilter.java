@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter({"/check-out.xhtml","/myOrder.xhtml"})
+@WebFilter({"/front_end/check-out.xhtml","/front_end/myOrder.xhtml"})
 public class CheckOutFilter implements Filter {
 
 	@Inject

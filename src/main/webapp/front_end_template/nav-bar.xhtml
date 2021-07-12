@@ -15,21 +15,22 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="#{view.viewId eq '/index.xhtml' ? 'active' :''}">
-						<h:link outcome="index">
+						<h:link outcome="/index">
 						Home
 						</h:link>
 						
 						</li>					
-						<li class="#{view.viewId eq '/shop.xhtml' ? 'active' :''}">
-						<h:link outcome="shop">
+						<li class="#{view.viewId eq '/front_end/shop.xhtml' ? 'active' :''}">
+						<h:link outcome="/front_end/shop">
 						Shop
 						</h:link>						
 						</li>
-						<li class="#{view.viewId eq '/about.xhtml' ? 'active' :''}">
-						<h:link outcome="/about">
+						<li class="#{view.viewId eq '/front_end/about.xhtml' ? 'active' :''}">
+						<h:link outcome="/front_end/about">
 						About
 						</h:link></li>
-						<li class="#{view.viewId eq '/contact.xhtml' ? 'active' :''}"><h:link outcome="/contact">
+						<li class="#{view.viewId eq '/front_end/contact.xhtml' ? 'active' :''}">
+						<h:link outcome="/front_end/contact">
 						Contact Us
 						</h:link></li>
 					</ul>

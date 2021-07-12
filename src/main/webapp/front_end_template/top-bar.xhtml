@@ -18,12 +18,12 @@
 				
 					<ul class="header-links pull-right" >
 						<li class="d-none">						
-						<h:link outcome="/login" styleClass="text-white" rendered="#{loginBean.loginUser.id == 0}">
+						<h:link outcome="/front_end/login" styleClass="text-white" rendered="#{loginBean.loginUser.id == 0}">
 						<i class="fas fa-sign-in-alt"></i>Login
 						</h:link>
 						</li>
 						<li>
-						<h:link outcome="/register" styleClass="text-white" rendered="#{loginBean.loginUser.id == 0}">
+						<h:link outcome="/front_end/register" styleClass="text-white" rendered="#{loginBean.loginUser.id == 0}">
 						<i class="fas fa-user"></i> Register
 						</h:link>												
 						</li>
@@ -133,12 +133,12 @@
 										</div>
 										<div class="cart-btns">
 										   
-										     <h:link outcome="/cart">
+										     <h:link outcome="/front_end/cart">
 										     Your Cart
 										     </h:link>
 										
 										
-											  <h:link outcome="/check-out" >
+											  <h:link outcome="/front_end/check-out" >
 										     <i class="fas fa-arrow-circle-right"></i>Checkout 
 										     </h:link>
 											
@@ -192,16 +192,17 @@
                       <span>Email:</span> #{loginBean.loginUser.loginId}<br/>
                      <span>Address:</span> #{loginBean.loginUser.address}<br/>
                      <span>Phone:</span> #{loginBean.loginUser.phone}<br/>
-                      <h:link outcome="myOrder" styleClass="btn btn-primary">
+                      <h:link outcome="/front_end/myOrder" styleClass="btn btn-primary">
                  <i class="fas fa-circle-o-notch"></i> My Order
                  </h:link>
                      
                  </div>
                  <div class="modal-footer">                 
                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                 <h:commandLink  styleClass="btn btn-primary">
+                 <h:link outcome="/front_end/register" styleClass="btn btn-primary">
+                  <f:param name="uId" value="#{loginBean.loginUser.id}"></f:param>
                  <i class="fas fa-save"></i> Edit
-                 </h:commandLink>
+                 </h:link>
                   
                  </div>
                 </h:form>
