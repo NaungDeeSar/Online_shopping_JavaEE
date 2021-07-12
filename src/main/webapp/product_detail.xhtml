@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<ui:composition template="/front_end_template/demo.xhtml">    
+    <ui:define name="main-content">
+    	<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						
+						<ul class="breadcrumb-tree">
+							<li>
+							   <h:link outcome="/index">
+							   Home
+							   </h:link>
+							</li>
+							<li class="active">#{productBean.product.name}</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+		<!-- SECTION -->
+		
+		
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+				 <h:form class="form" enctype="multipart/form-data" >
+                     <h:inputHidden value="#{productBean.product.id}" />
+					<!-- Product main img -->
+					<div class="col-md-5 col-md-push-2">
+						<div id="product-main-img">
+							<div class="product-preview">
+								<h:graphicImage library="uploads" name="#{productBean.product.photo}" />
+							</div>
+
+							<div class="product-preview">
+								<h:graphicImage library="uploads" name="#{productBean.product.photo}" />
+							</div>
+
+							<div class="product-preview">
+								<h:graphicImage library="uploads" name="#{productBean.product.photo}" />
+							</div>
+
+							<div class="product-preview">
+								<h:graphicImage library="uploads" name="#{productBean.product.photo}" />
+							</div>
+						</div>
+					</div>
+					<!-- /Product main img -->
+
+					<!-- Product thumb imgs -->
+					<div class="col-md-2  col-md-pull-5">
+						<div id="product-imgs">
+							<div class="product-preview">
+								<h:graphicImage library="uploads" name="#{productBean.product.photo}" />
+							</div>
+
+							<div class="product-preview">
+								<h:graphicImage library="uploads" name="#{productBean.product.photo}" />
+							</div>
+
+							<div class="product-preview">
+								<h:graphicImage library="uploads" name="#{productBean.product.photo}" />
+							</div>
+
+							<div class="product-preview">
+								<h:graphicImage library="uploads" name="#{productBean.product.photo}" />
+							</div>
+						</div>
+					</div>
+					<!-- /Product thumb imgs -->
+
+					<!-- Product details -->
+					<div class="col-md-5">
+						<div class="product-details">
+							<h2 class="product-name">#{productBean.product.name}</h2>
+							<div>
+								<div class="product-rating">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star-o"></i>
+								</div>
+								
+							</div>
+							<div>
+								<h3 class="product-price">Ks #{productBean.product.price}</h3>
+								<span class="product-available">In Stock</span>
+							</div>
+							<p>
+							#{productBean.product.productDetail}
+							</p>
+
+						
+
+							<div class="add-to-cart">
+								<div class="qty-label">
+									Qty
+									<select class="input-select">
+										<option value="0">1</option>
+									</select>
+									
+								</div>
+								
+								<h:form>
+									
+									<h:commandButton action="#{cartBean.addToCart()}"  styleClass="add-to-cart-btn" value=" add to cart">
+									
+									 <f:ajax render="cart-item-count"></f:ajax>
+									 <f:ajax render="cart-item-total"></f:ajax>
+									</h:commandButton>
+									</h:form>
+							
+							</div>							
+
+							<ul class="product-links">
+								<li>Category:</li>
+								<li><a href="#">#{productBean.product.category.name}</a></li>
+								
+							</ul>
+							<ul class="product-links">
+								<li>Brand:</li>
+								<li><a href="#">#{productBean.product.brand.name}</a></li>
+								
+							</ul>
+
+							<ul class="product-links">
+								<li>Share:</li>
+								<li><a href="#"><i class="fas fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fas fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fas fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fas fa-envelope"></i></a></li>
+							</ul>
+
+						</div>
+					</div>
+					<!-- /Product details -->
+					
+					</h:form>
+					</div>
+				</div>
+				
+				</div>
+		
+   		
+    </ui:define>
+</ui:composition>
+</html>

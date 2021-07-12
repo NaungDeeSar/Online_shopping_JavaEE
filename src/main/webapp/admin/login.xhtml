@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<h:head>
+<h:outputStylesheet library="webjars" name="font-awesome/5.15.3/css/all.min-jsf.css"></h:outputStylesheet>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+</link>
+    <!-- Custom styles for this template-->
+    <h:outputStylesheet library="css" name="sb-admin-2.min.css"></h:outputStylesheet>
+    
+
+</h:head> 
+<body> 
+<div class="container">
+		<div class="row mt-4 pt-5 m-auto">
+			<div class="col-6 offset-3">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="text-center">Login</h3>
+					</div>
+					<div class="card-body">
+					<div class="alert alert-danger #{empty facesContext.messageList ? 'd-none' : ''}">
+						<h:messages />
+					</div>
+					<h:form styleClass="form" id="loginForm">
+					<div class="form-group">
+					   <label for="">LoginId</label>
+					   <h:inputText value="#{loginBean.loginId}" styleClass="form-control" id="loginId" />
+					
+					</div>
+					<div class="form-group">
+					   <label for="">Password</label>
+					   <h:inputSecret value="#{loginBean.password}" styleClass="form-control" />
+					
+					</div>
+					<div class="form-group">
+					  <h:commandButton action="#{loginBean.login()}" value="Login" styleClass="btn btn-primary" />
+					
+					</div>
+					
+					</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body> 
+</html>

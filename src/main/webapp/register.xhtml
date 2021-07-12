@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<ui:composition template="/front_end_template/demo.xhtml">    
+    <ui:define name="main-content">
+    	<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						
+						<ul class="breadcrumb-tree">
+							<li>
+							   <h:link outcome="/index">
+							   Home
+							   </h:link>
+							</li>
+							<li class="active">CREATE AN ACCOUNT</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+		<!-- SECTION -->
+		
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-7">
+						<!-- registeration -->
+						<div class="billing-details">
+							<div class="section-title">
+								<h3 class="title text-danger">Create An Account</h3>
+							</div>
+							<h:form styleClass="form" id="userForm">
+							<div class="form-group">
+								<h:inputText value="#{registerBean.user.userName}" class="input" type="text" id="name" p:placeholder="Enter UserName" validatorMessage="* Require username">
+								  <f:validateRequired/>
+								</h:inputText>
+								<small>
+								<h:message for="name" class="text-danger"/>
+								</small>
+							</div>
+							
+							<div class="form-group">
+								<h:inputText id="loginId" value="#{registerBean.user.loginId}" class="input" type="email" name="email" p:placeholder="Email" validatorMessage="* Require Email">
+								 <f:validateRequired/>
+								</h:inputText>
+								<small>
+								<h:message for="loginId" class="text-danger"/>
+								</small>
+							</div>
+							<div class="form-group">
+							  <h:inputSecret value="#{registerBean.user.password}" class="input" type="password" name="password"  p:placeholder="Enter Password" />
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{registerBean.user.address}" class="input" type="text" name="address" p:placeholder="Enter Address"/>
+							</div>
+							<div class="form-group">
+								<h:inputText value="#{registerBean.user.phone}" class="input" type="text" name="phone" p:placeholder="Enter Phone"/>
+							</div>
+							
+							
+							<div class="form-group">
+							 <h:commandButton action="#{registerBean.save()}" value="Create Account"  styleClass="primary-btn order-submit"/>
+							</div>			
+							
+							
+							</h:form>
+								
+						<!-- /Register -->
+						</div>
+						
+				</div>
+			</div>
+		
+						
+    </div>
+    </ui:define>
+</ui:composition>
+</html>

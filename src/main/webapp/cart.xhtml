@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<ui:composition template="/front_end_template/demo.xhtml">    
+    <ui:define name="main-content">
+    	<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						
+						<ul class="breadcrumb-tree">
+							<li>
+							   <h:link outcome="/index">
+							   Home
+							   </h:link>
+							</li>
+							<li class="active">Shopping Cart</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+		
+		<div class="container">	
+			   <h:form rendered="#{cartBean.itemCount==0}">
+			   <div class="row">
+                <div class="col-lg-12 text-center">
+                	     <h4 class="text-center"> Cart is Empty.   </h4>  
+                	       <h:link outcome="shop"  value="Go To Shopping" styleClass="primary-btn order-submit" />
+	                        
+               	</div>         
+                
+              </div>
+			   
+			   </h:form>
+           <h:form rendered="#{cartBean.itemCount !=0}">           
+           	<div class="row">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 ">
+                	
+	                	<h:dataTable styleClass="table" var="oitem" value="#{cartBean.order.details}">
+	                	<h:column>
+	                	 <f:facet name="header">Product</f:facet>
+	                	   #{oitem.product.name}
+	                	</h:column>
+	                	<h:column>
+	                	 <f:facet name="header">Price</f:facet>
+	                	  #{oitem.product.price} Ks
+	                	</h:column>
+	                	<h:column>
+	                	 <f:facet name="header">Qty</f:facet>
+	                	          <div class="cart__qty text-center">
+	                                            <div class="qtyField">
+	                                            <h:commandLink action="#{cartBean.qtyMinus(oitem.product.id)}" styleClass="qtyBtn minus" >
+	                                               <i class="fas fa-minus"></i>
+	                                                <f:ajax render="@form sub-total total" execute="@form"></f:ajax>
+	                                                </h:commandLink>
+	                                                
+	                                               
+	                                                <h:inputText class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="#{oitem.subQty}" pattern="[0-9]*">
+	                                                 <f:ajax listener="#{cartBean.updateQty()}" execute="@this" render="@form sub-total total"></f:ajax>
+	                                                </h:inputText>
+	                                                <h:commandLink action="#{cartBean.qtyPlus(oitem.product.id)}" styleClass="qtyBtn plus" >
+	                                                <i class="fas fa-plus"></i>
+	                                                <f:ajax render="@form sub-total total" execute="@form"></f:ajax>
+	                                                </h:commandLink>	                                                
+	                                            </div>
+	                                        </div>
+	                	</h:column>
+	                	<h:column>
+	                	 <f:facet name="header">Total</f:facet>
+	                	 #{oitem.subPrice()} Ks
+	                	</h:column>
+	                	<h:column>
+	                	 <f:facet name="header"></f:facet>
+	                	 <h:commandLink action="#{cartBean.removeFromCart(oitem)}" value="" >
+	                	 <i class="fas fa-remove"></i>
+	                	 </h:commandLink>
+	                	</h:column>	                	
+	                	</h:dataTable> 
+	                	<h:link outcome="shop"  value="Continue Shopping" styleClass="primary-btn order-submit" />
+	                
+	                                 
+               	</div>
+          
+                <div class="col-12 col-sm-12 col-md-4 order-details">
+						<div class="section-title text-center">
+							<h3 class="title">Your Order</h3>
+						</div>
+						<div class="order-summary">
+							<div class="order-col">
+								<div><strong>SubTotal</strong></div>
+								<div><strong>
+								<h:outputText value="#{cartBean.order.totalAmount}" id="sub-total"/>
+								Ks</strong></div>
+							</div>
+							
+							<div class="order-col">
+								<div><strong>TOTAL</strong></div>
+								<div><strong class="order-total">
+								<h:outputText value="#{cartBean.order.totalAmount}" id="total" />
+								Ks</strong></div>
+							</div>
+						</div>				
+							<h:link outcome="check-out"  value="Checkout" styleClass="primary-btn order-submit" />
+	                
+					</div>
+              </div>
+       
+       
+           
+           </h:form>
+        </div>
+      
+		
+   		
+    </ui:define>
+    <ui:define name="js">
+      <script type="text/javascript">
+      function qnt_incre(){
+  		$(".qtyBtn").on("click", function() {
+  		  var qtyField = $(this).parent(".qtyField"),
+  			 oldValue = $(qtyField).find(".qty").val(),
+  			  newVal = 1;
+  	
+  		  if ($(this).is(".plus")) {
+  			newVal = parseInt(oldValue) + 1;
+  		  } else if (oldValue > 1) {
+  			newVal = parseInt(oldValue) - 1;
+  		  }
+  		  $(qtyField).find(".qty").val(newVal);
+  		});
+  	}
+  	qnt_incre();
+
+		</script>
+    </ui:define>
+</ui:composition>
+
+</html>

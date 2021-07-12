@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<ui:composition>
+<header>
+			<!-- TOP HEADER -->
+			<div id="top-header">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fas fa-phone"></i> +0925023942</a></li>
+						<li><a href="#"><i class="fas fa-envelope"></i>Blackpink@gmail.com</a></li>
+						<li><a href="#"><i class="fas fa-map-marker"></i> 2021 Heart Road</a></li>
+					</ul>
+				
+					<ul class="header-links pull-right" >
+						<li class="d-none">						
+						<h:link outcome="/login" styleClass="text-white" rendered="#{loginBean.loginUser.id == 0}">
+						<i class="fas fa-sign-in-alt"></i>Login
+						</h:link>
+						</li>
+						<li>
+						<h:link outcome="/register" styleClass="text-white" rendered="#{loginBean.loginUser.id == 0}">
+						<i class="fas fa-user"></i> Register
+						</h:link>												
+						</li>
+					</ul>
+							
+					<ul class="header-links pull-right" >
+					
+						<li>	
+						 <h:commandLink  onclick="$('#UserDialog').modal('show')" styleClass="" rendered="#{loginBean.loginUser.id != 0}" >
+						    <i class="fas fa-user"></i> <span style="color:#fff;">#{loginBean.loginUser.userName}</span>
+						     <f:ajax render="editForm"></f:ajax>
+					 </h:commandLink> 					
+						
+						</li>
+						<li>
+					<h:form>
+								<h:commandButton action="#{logoutBean.logout()}"  styleClass="dropdown-item" value="Logout" rendered="#{loginBean.loginUser.id != 0}">
+								
+								</h:commandButton>
+							</h:form>
+					</li>
+						
+					</ul>
+				</div>
+			</div>
+			<!-- /TOP HEADER -->
+			<!-- MAIN HEADER -->
+			<div id="header">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<!-- LOGO -->
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a href="#" class="logo">
+									<h:graphicImage library="img" name="logo1.png" />
+								</a>
+							</div>
+						</div>
+						<!-- /LOGO -->
+
+						<!-- SEARCH BAR -->
+						<div class="col-md-6">
+							<div class="header-search">
+								<form>
+									<select class="input-select">
+										<option value="0">All Categories</option>
+										<option value="1">Category 01</option>
+										<option value="1">Category 02</option>
+									</select>
+									<h:inputText class="input" placeholder="Search here"/>
+									<button class="search-btn">Search</button>
+								</form>
+							</div>
+						</div>
+						<!-- /SEARCH BAR -->
+
+						<!-- ACCOUNT -->
+						<div class="col-md-3 clearfix">
+							<div class="header-ctn">
+								<!-- Wishlist -->
+								
+								<!-- /Wishlist -->
+
+								<!-- Cart -->
+								<div class="dropdown">
+								
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+										
+										<i class="fas fa-shopping-cart"></i>
+										<span>
+										 <h:outputText value="#{cartBean.order.totalAmount}" id="cart-item-total">
+										
+										 </h:outputText>
+										  Ks
+										 </span>
+										<div class="qty">
+										<h:outputText value="#{cartBean.itemCount}" id="cart-item-count" />										
+										</div>
+										
+									</a>
+									<div class="cart-dropdown">
+										<div class="cart-list">
+											<h:form id="cartForm">
+											<ui:repeat var="orderItem" value="#{cartBean.order.details}">
+											<div class="product-widget">
+												<div class="product-img">
+													<h:graphicImage library="uploads" name="#{orderItem.product.photo}" />
+													
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">#{orderItem.product.name}</a></h3>
+													<h4 class="product-price"><span class="qty">1x</span>#{orderItem.product.price}</h4>
+												</div>
+												<button class="delete"><i class="fas fa-close"></i></button>
+											</div>
+											</ui:repeat>
+											</h:form>
+
+											
+										</div>
+										<div class="cart-summary">
+											<small>#{cartBean.itemCount} Item(s) selected</small>
+											
+											<h5>SUBTOTAL: #{cartBean.order.totalAmount}Ks</h5>
+										</div>
+										<div class="cart-btns">
+										   
+										     <h:link outcome="/cart">
+										     Your Cart
+										     </h:link>
+										
+										
+											  <h:link outcome="/check-out" >
+										     <i class="fas fa-arrow-circle-right"></i>Checkout 
+										     </h:link>
+											
+										
+										
+										</div>
+									</div>
+								</div>
+								<!-- /Cart -->
+
+								<!-- Menu Toogle -->
+								<div class="menu-toggle">
+									<a href="#">
+										<i class="fas fa-bars"></i>
+										<span>Menu</span>
+									</a>
+								</div>
+								<!-- /Menu Toogle -->
+							</div>
+						</div>
+						<!-- /ACCOUNT -->
+					</div>
+					<!-- row -->
+				</div>
+				<!-- container -->
+			</div>
+			<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+
+ 			<div class="modal fade"  id="UserDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                 <div class="modal-content">
+                 <h:form id="editForm" styleClass="form">
+                    <div class="modal-header">
+                      
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">X</span>
+				        </button>
+				         <h4 class="text-center">
+                        My Profile
+                       </h4>
+                    </div>
+                 
+                 <div class="modal-body text-center">
+                     <h:graphicImage library="uploads"  name="noimage.jpg" style="width:150px;border-radius:50%;border:4px dotted gray;"/>
+                     <h4 class="text-center text-muted py-3">
+                     #{loginBean.loginUser.userName}
+                     </h4>
+                     <span>Role:</span> #{loginBean.loginUser.role} <br/>
+                      <span>Email:</span> #{loginBean.loginUser.loginId}<br/>
+                     <span>Address:</span> #{loginBean.loginUser.address}<br/>
+                     <span>Phone:</span> #{loginBean.loginUser.phone}<br/>
+                      <h:link outcome="myOrder" styleClass="btn btn-primary">
+                 <i class="fas fa-circle-o-notch"></i> My Order
+                 </h:link>
+                     
+                 </div>
+                 <div class="modal-footer">                 
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                 <h:commandLink  styleClass="btn btn-primary">
+                 <i class="fas fa-save"></i> Edit
+                 </h:commandLink>
+                  
+                 </div>
+                </h:form>
+               </div>
+             </div>
+           </div>
+        
+
+</ui:composition> 
+</html>

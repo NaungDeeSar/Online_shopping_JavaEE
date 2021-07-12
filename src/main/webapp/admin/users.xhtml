@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+<ui:composition template="/template/template.xhtml">
+    <ui:define name="title">Users</ui:define>
+    <ui:define name="top-header">Users List</ui:define>
+    <ui:define name="main-header">Users</ui:define>
+    <ui:define name="add-button">
+     <h:link outcome="/admin/user-add" rendered="#{loginBean.loginUser.role =='Admin'}" styleClass="d-none d-sm-inline-block btn btn-md btn-primary shadow-sm">
+      <i class="fas fa-plus fa-sm text-white-50"></i> Add
+     </h:link>
+                    
+    </ui:define>
+   <ui:define name="main-content">  
+   <div class="card shadow mb-4 ">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Users Table</h6>
+                        </div>
+                        <div class="card-body">
+                        
+                            <div class="table-responsive">
+                        <h:dataTable var ="u" value="#{userBean.userList}" styleClass="table table-bordered" id="dataTable" >
+                        <h:column>
+                          <f:facet name="header">No</f:facet>
+                           #{u.id}
+                        </h:column>
+                         <h:column>
+                          <f:facet name="header">Name</f:facet>
+                           #{u.userName}
+                        </h:column>
+                         <h:column>
+                          <f:facet name="header">LoginId</f:facet>
+                           #{u.loginId}
+                        </h:column>
+                         
+                         <h:column>
+                          <f:facet name="header">Address</f:facet>
+                           #{u.address}
+                        </h:column>
+                        <h:column>
+                          <f:facet name="header">Phone</f:facet>
+                           #{u.phone}
+                        </h:column>
+                         <h:column rendered="#{loginBean.loginUser.role =='Admin'}">
+                          <f:facet name="header">Action</f:facet>
+                           <h:link outcome="/admin/user-add">
+                          <f:param name="uId" value="#{u.id}"></f:param>
+                         <i class="fas fa-edit">Edit</i>
+                          </h:link> |
+                          
+                          <h:commandLink action="#{userBean.remove(u.id)}" onclick="if(!confirm('Are your sure deleted?')){return false}" styleClass="text-danger" >
+                          <i class="fas fa-trash"> Remove</i>
+                          </h:commandLink>
+                        </h:column>
+                         
+                        </h:dataTable>
+                               </div>
+                            </div>
+                       </div>        
+    
+    
+    </ui:define>
+</ui:composition>
+</html>

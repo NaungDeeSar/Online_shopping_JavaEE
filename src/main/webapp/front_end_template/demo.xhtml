@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+<h:head>
+<title>
+<ui:insert name="title">Home</ui:insert>
+</title>
+
+   <h:outputStylesheet library="webjars" name="font-awesome/5.15.3/css/all.min-jsf.css"></h:outputStylesheet>
+   <!-- Google font -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+		</link>
+    <!-- Custom styles for this template-->  
+    <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <h:outputStylesheet library="css" name="slick.css"></h:outputStylesheet>
+    <h:outputStylesheet library="css" name="slick-theme.css"></h:outputStylesheet>
+     <h:outputStylesheet library="css" name="nouislider.min.css"></h:outputStylesheet>
+     <h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+     <h:outputStylesheet library="css" name="font-awesome.min.css"></h:outputStylesheet>
+     <style>
+   .qtyField { display:table; margin:0 auto; }
+.qtyField .qty { width:40px; }
+.qtyField .qtyBtn, .qtyField .qty { padding:10px 6px; width:30px; height:42px; border-radius:0; float:left; }
+.qtyField a { background-color:#eee; color:#000; }
+.qtyField a .fa { font-size:12px; line-height:21px; }
+.qtyField > a, .qtyField > span, .qtyField input { display:table-cell; line-height:normal; text-align:center; padding:3px 6px; border:1px solid #f5f5f5; }
+ 
+</style>
+     
+</h:head>
+<body>
+
+<!-- HEADER -->
+		<!-- top-bar -->
+		<ui:include src="/front_end_template/top-bar.xhtml" />
+		<!-- /top-bar-->
+		<!-- NAVIGATION -->
+		<ui:include src="/front_end_template/nav-bar.xhtml" />
+		<!-- /NAVIGATION -->
+		
+		<ui:insert name="main-content">
+        </ui:insert>
+		
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">	
+     <div class="row text-center">
+     <br/>
+         <div class="col-lg-4 col-md-6 col-12">
+             <div class="featurebox">
+                 <i class="fas fa-truck-moving fa-4x text-danger py-3 ml-5"></i>
+                  <br/><br/>
+                 <h4 class="text-info">Door to Door Delivery</h4>
+                 <p class="text-muted">On-time Delivery</p>
+             </div>
+         </div>
+
+         <div class="col-lg-4 col-md-6 col-12">
+             <div class="featurebox">
+                 <i class="fas fa-headphones-alt fa-4x text-danger py-3 ml-5"></i>
+                 <br/><br/>
+              <h4 class="text-info ">Customer Service</h4>
+             <p class="text-muted">Phone : <a href="tel:09000000">09-777-323</a>
+             </p></div> 
+         </div>
+        
+         <div class="col-lg-4 col-md-6 col-12">
+             <div class="featurebox">
+                 <i class="fas fa-credit-card fa-4x text-danger py-3 ml-5 mt-3"></i>
+                  <br/><br/>
+                 <h4 class="text-info">Cash on Delivery</h4> <p class="text-muted">Online Payment</p>
+             </div>
+         </div>
+        </div>
+    
+			</div>
+			<!-- /container -->
+		
+		</div>
+		<!-- /NEWSLETTER -->
+
+		<!-- FOOTER -->
+		<ui:include src="/front_end_template/footer.xhtml" />
+		<!-- /FOOTER -->
+
+ <!-- Custom scripts for all pages-->
+      <h:outputScript library="js" name="jquery.min.js"></h:outputScript>     
+      <h:outputScript library="js" name="bootstrap.min.js"></h:outputScript>
+      <h:outputScript library="js" name="slick.min.js"></h:outputScript>      
+      <h:outputScript library="js" name="jquery.zoom.min.js"></h:outputScript>     
+      <h:outputScript library="js" name="nouislider.min.js"></h:outputScript>     
+      <h:outputScript library="js" name="main.js"></h:outputScript>
+      <ui:insert name="js"></ui:insert>
+</body>
+</html>
